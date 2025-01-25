@@ -23,7 +23,7 @@ const Projects = () => {
     {
       id: 3,
       title: "Client's Virtual Assistant Portfolio",
-      description: "A modern and responsive personal portfolio showcasing my projects and skills.",
+      description: "A modern and responsive personal portfolio showcasing her projects and skills.",
       livePreview: "https://va-portfolio-5e44c.web.app/",
       thumbnail: "https://api.microlink.io/?url=https%3A%2F%2Fva-portfolio-5e44c.web.app%2F&overlay.browser=dark&screenshot=true&embed=screenshot.url",
       technologies: ["React", "Tailwind CSS", "Firebase"]
