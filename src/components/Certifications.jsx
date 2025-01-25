@@ -5,6 +5,7 @@ import javaIMG from '../assets/java.png';
 import alxIMG from '../assets/professional foundations.jpeg';
 import ukznIMG from '../assets/ukzn.png';
 import SectionTitle from './SectionTitle';
+
 // Configure PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -14,7 +15,7 @@ const certifications = [
     title: 'Java Programming',
     issuer: 'Pirple.com',
     date: 'August 2022',
-    pdfUrl: '../assets/Mthobisi Snalo Cele - 2022-08-17.pdf',
+    pdfUrl: '/assets/Mthobisi%20Snalo%20Cele%20-%202022-08-17.pdf', // URL-encoded
     previewImage: javaIMG
   },
   {
@@ -22,7 +23,7 @@ const certifications = [
     title: 'Professional Foundations',
     issuer: 'African Leadership Experience',
     date: 'August 2024',
-    pdfUrl: '../assets/professional foundations.pdf',
+    pdfUrl: '/assets/professional%20foundations.pdf', // URL-encoded
     previewImage: alxIMG
   },
   {
@@ -30,7 +31,7 @@ const certifications = [
     title: 'Front-End Development',
     issuer: 'African Leadership Experience',
     date: 'October 2024',
-    pdfUrl: '../assets/69-front-end-web-development-certificate-mthobisi-snalo-cele.pdf',
+    pdfUrl: '/assets/69-front-end-web-development-certificate-mthobisi-snalo-cele.pdf',
     previewImage: frontendIMG
   },
   {
@@ -38,7 +39,7 @@ const certifications = [
     title: 'UKZN Tech Society Membership',
     issuer: 'UKZN Tech Society',
     date: 'November 2023',
-    pdfUrl: '../assets/Mthobisi SnaloCele.pdf',
+    pdfUrl: '/assets/Mthobisi%20SnaloCele.pdf', // URL-encoded
     previewImage: ukznIMG
   }
 ];
@@ -66,11 +67,13 @@ const CertificationCard = ({ cert, onClick }) => {
   );
 };
 
+import { Viewer, Worker } from '@react-pdf-viewer/core';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+
 const PDFModal = ({ pdfUrl, onClose }) => {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
     <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
@@ -85,66 +88,13 @@ const PDFModal = ({ pdfUrl, onClose }) => {
           </button>
         </div>
         
-        {isLoading && (
-          <div className="flex justify-center items-center py-10">
-            <div className="text-white">Loading certificate...</div>
-          </div>
-        )}
-
-        {error && (
-          <div className="text-red-400 text-center py-10">
-            Failed to load PDF. Please try again later.
-          </div>
-        )}
-
-        <Document
-          file={pdfUrl}
-          onLoadSuccess={({ numPages }) => {
-            setNumPages(numPages);
-            setIsLoading(false);
-            setError(null);
-          }}
-          onLoadError={(error) => {
-            console.error('Error loading PDF:', error);
-            setIsLoading(false);
-            setError(error);
-          }}
-          className="flex justify-center"
-        >
-          <Page 
-            pageNumber={pageNumber} 
-            renderTextLayer={false}
-            className="max-w-full"
-            scale={1.0}
-            loading={
-              <div className="text-white text-center py-4">
-                Loading page...
-              </div>
-            }
+        {/* Use react-pdf-viewer to display the PDF */}
+        <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+          <Viewer
+            fileUrl={pdfUrl}
+            plugins={[defaultLayoutPluginInstance]}
           />
-        </Document>
-
-        {numPages > 1 && !isLoading && !error && (
-          <div className="flex justify-center gap-4 mt-4">
-            <button
-              onClick={() => setPageNumber(Math.max(1, pageNumber - 1))}
-              disabled={pageNumber <= 1}
-              className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
-            >
-              Previous
-            </button>
-            <span className="text-white">
-              Page {pageNumber} of {numPages}
-            </span>
-            <button
-              onClick={() => setPageNumber(Math.min(numPages, pageNumber + 1))}
-              disabled={pageNumber >= numPages}
-              className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
-        )}
+        </Worker>
       </div>
     </div>
   );
