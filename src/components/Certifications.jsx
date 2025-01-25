@@ -1,13 +1,9 @@
 import { useState } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
 import frontendIMG from '../assets/frontend.png';
 import javaIMG from '../assets/java.png';
 import alxIMG from '../assets/professional foundations.jpeg';
 import ukznIMG from '../assets/ukzn.png';
 import SectionTitle from './SectionTitle';
-
-// Configure PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const certifications = [
   {
@@ -15,7 +11,7 @@ const certifications = [
     title: 'Java Programming',
     issuer: 'Pirple.com',
     date: 'August 2022',
-    pdfUrl: '/assets/Mthobisi%20Snalo%20Cele%20-%202022-08-17.pdf', // URL-encoded
+    pdfUrl: '/assets/Mthobisi%20Snalo%20Cele%20-%202022-08-17.pdf',
     previewImage: javaIMG
   },
   {
@@ -23,7 +19,7 @@ const certifications = [
     title: 'Professional Foundations',
     issuer: 'African Leadership Experience',
     date: 'August 2024',
-    pdfUrl: '/assets/professional%20foundations.pdf', // URL-encoded
+    pdfUrl: '/assets/professional%20foundations.pdf',
     previewImage: alxIMG
   },
   {
@@ -39,7 +35,7 @@ const certifications = [
     title: 'UKZN Tech Society Membership',
     issuer: 'UKZN Tech Society',
     date: 'November 2023',
-    pdfUrl: '/assets/Mthobisi%20SnaloCele.pdf', // URL-encoded
+    pdfUrl: '/assets/Mthobisi%20SnaloCele.pdf',
     previewImage: ukznIMG
   }
 ];
@@ -87,8 +83,6 @@ const PDFModal = ({ pdfUrl, onClose }) => {
             ✕
           </button>
         </div>
-        
-        {/* Use react-pdf-viewer to display the PDF */}
         <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
           <Viewer
             fileUrl={pdfUrl}
