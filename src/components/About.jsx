@@ -10,7 +10,21 @@ const About = () => {
     { icon: <FaEnvelope />, text: "Personal Email", href: "mailto:celersnalor0119@gmail.com" },
     { icon: <FaPhone />, text: "+27762392923", href: "tel:+27762392923" },
     { icon: <FaLinkedin />, text: "LinkedIn", href: "https://www.linkedin.com/in/celesnalo" },
-    { icon: <FaGithub />, text: "GitHub", href: "https://github.com/celesnalo" }
+    { icon: <FaGithub />, text: "GitHub", href: "https://github.com/celesnalo" },
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-6 h-6 text-blue-400"
+        >
+          <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.406-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z" />
+        </svg>
+      ),
+      text: "Upwork",
+      href: "https://www.upwork.com/freelancers/~015a937ab5667969a7?mp_source=share"
+    }
   ];
 
   const skills = [
@@ -49,7 +63,7 @@ const About = () => {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto py-20 px-4">
+    <section id="about" className="max-w-6xl mx-auto py-20 px-4">
       <div className="grid md:grid-cols-2 gap-12 items-start">
         {/* Left Column - About Info */}
         <div className="space-y-6">
@@ -69,8 +83,10 @@ const About = () => {
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Download Resume"
+              title="Download my resume"
             >
-            Resume Preview
+              Resume Preview
             </a>
           </div>
 
@@ -100,6 +116,8 @@ const About = () => {
                   target={info.href?.startsWith('http') ? '_blank' : undefined}
                   rel={info.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors"
+                  aria-label={`Contact me via ${info.text}`}
+                  title={`Contact me via ${info.text}`}
                 >
                   <span className="text-blue-400">{info.icon}</span>
                   <span>{info.text}</span>
@@ -149,4 +167,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default About;

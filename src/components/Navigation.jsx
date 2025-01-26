@@ -9,60 +9,95 @@ const Navigation = () => {
     <nav className="fixed w-full z-50 bg-gray-900/90 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-bold bg-clip-text text-transparent" style={{
-            backgroundImage: 'radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(173,70,252,1) 74%)'
-          }}>
+          {/* Logo */}
+          <Link 
+            to="/" 
+            className="text-xl font-bold bg-clip-text text-transparent" 
+            style={{
+              backgroundImage: 'radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(173,70,252,1) 74%)'
+            }}
+            aria-label="Home"
+            title="Home"
+          >
             CeleSnalo
           </Link>
 
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link 
-              to="/"
-              className={`nav-link ${location.pathname === '/' ? 'text-blue-400' : 'text-gray-300'}`}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/about"
-              className={`nav-link ${location.pathname === '/about' ? 'text-blue-400' : 'text-gray-300'}`}
-            >
-              About
-            </Link>
-            <Link 
-              to="/projects"
-              className={`nav-link ${location.pathname === '/projects' ? 'text-blue-400' : 'text-gray-300'}`}
-            >
-              Projects
-            </Link>
-            <Link 
-              to="/experience"
-              className={`nav-link ${location.pathname === '/experience' ? 'text-blue-400' : 'text-gray-300'}`}
-            >
-              Experience
-            </Link>
-            <Link 
-              to="/certifications"
-              className={`nav-link ${location.pathname === '/certifications' ? 'text-blue-400' : 'text-gray-300'}`}
-            >
-              Certifications
-            </Link>
-            <Link 
-              to="/contact"
-              className={`nav-link ${location.pathname === '/contact' ? 'text-blue-400' : 'text-gray-300'}`}
-            >
-              Contact
-            </Link>
+            <ul className="flex space-x-8">
+              <li>
+                <Link 
+                  to="/"
+                  className={`nav-link ${location.pathname === '/' ? 'text-blue-400' : 'text-gray-300'}`}
+                  aria-label="Home"
+                  title="Home"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/about"
+                  className={`nav-link ${location.pathname === '/about' ? 'text-blue-400' : 'text-gray-300'}`}
+                  aria-label="About Me"
+                  title="About Me"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/projects"
+                  className={`nav-link ${location.pathname === '/projects' ? 'text-blue-400' : 'text-gray-300'}`}
+                  aria-label="View My Projects"
+                  title="View My Projects"
+                >
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/experience"
+                  className={`nav-link ${location.pathname === '/experience' ? 'text-blue-400' : 'text-gray-300'}`}
+                  aria-label="My Experience"
+                  title="My Experience"
+                >
+                  Experience
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/certifications"
+                  className={`nav-link ${location.pathname === '/certifications' ? 'text-blue-400' : 'text-gray-300'}`}
+                  aria-label="My Certifications"
+                  title="My Certifications"
+                >
+                  Certifications
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/contact"
+                  className={`nav-link ${location.pathname === '/contact' ? 'text-blue-400' : 'text-gray-300'}`}
+                  aria-label="Contact Me"
+                  title="Contact Me"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <div className="flex md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
-              aria-expanded="false"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
               <span className="sr-only">Open main menu</span>
-              {/* Hamburger icon */}
+              {/* Hamburger Icon */}
               <svg
                 className={`h-6 w-6 ${isMenuOpen ? 'hidden' : 'block'}`}
                 xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +107,7 @@ const Navigation = () => {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
-              {/* Close icon */}
+              {/* Close Icon */}
               <svg
                 className={`h-6 w-6 ${isMenuOpen ? 'block' : 'hidden'}`}
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,8 +121,8 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile menu dropdown */}
-        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
+        {/* Mobile Menu Dropdown */}
+        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`} id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link 
               to="/"
@@ -95,6 +130,8 @@ const Navigation = () => {
                 location.pathname === '/' ? 'bg-gray-800 text-blue-400' : 'text-gray-300 hover:bg-gray-700'
               }`}
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Home"
+              title="Home"
             >
               Home
             </Link>
@@ -104,6 +141,8 @@ const Navigation = () => {
                 location.pathname === '/about' ? 'bg-gray-800 text-blue-400' : 'text-gray-300 hover:bg-gray-700'
               }`}
               onClick={() => setIsMenuOpen(false)}
+              aria-label="About Me"
+              title="About Me"
             >
               About
             </Link>
@@ -113,6 +152,8 @@ const Navigation = () => {
                 location.pathname === '/projects' ? 'bg-gray-800 text-blue-400' : 'text-gray-300 hover:bg-gray-700'
               }`}
               onClick={() => setIsMenuOpen(false)}
+              aria-label="View My Projects"
+              title="View My Projects"
             >
               Projects
             </Link>
@@ -122,6 +163,8 @@ const Navigation = () => {
                 location.pathname === '/experience' ? 'bg-gray-800 text-blue-400' : 'text-gray-300 hover:bg-gray-700'
               }`}
               onClick={() => setIsMenuOpen(false)}
+              aria-label="My Experience"
+              title="My Experience"
             >
               Experience
             </Link>
@@ -131,6 +174,8 @@ const Navigation = () => {
                 location.pathname === '/certifications' ? 'bg-gray-800 text-blue-400' : 'text-gray-300 hover:bg-gray-700'
               }`}
               onClick={() => setIsMenuOpen(false)}
+              aria-label="My Certifications"
+              title="My Certifications"
             >
               Certifications
             </Link>
@@ -140,6 +185,8 @@ const Navigation = () => {
                 location.pathname === '/contact' ? 'bg-gray-800 text-blue-400' : 'text-gray-300 hover:bg-gray-700'
               }`}
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Contact Me"
+              title="Contact Me"
             >
               Contact
             </Link>
