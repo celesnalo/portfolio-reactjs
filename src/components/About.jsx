@@ -1,6 +1,7 @@
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt, FaReact, FaJava, FaPython, FaGitAlt } from 'react-icons/fa';
-import { SiJavascript, SiTailwindcss, SiFirebase, SiVercel, SiEclipseide, SiPycharm } from 'react-icons/si';
-import { TbBrandVscode } from 'react-icons/tb';
+import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt, FaReact, FaJava, FaPython, FaGitAlt} from 'react-icons/fa';
+import { SiJavascript, SiTailwindcss, SiFirebase, SiVercel, SiEclipseide, SiPycharm, SiDotnet} from 'react-icons/si';
+import { TbBrandVscode, TbBrandCSharp, TbBrandFramerMotion, TbBrandThreejs} from 'react-icons/tb';
+import { DiVisualstudio } from "react-icons/di";
 import resume from '../assets/Snalo SE Resume.docx.pdf';
 import SectionTitle from './SectionTitle';
 
@@ -34,6 +35,8 @@ const About = () => {
         { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> },
         { name: "Python", icon: <FaPython className="text-blue-500" /> },
         { name: "Java", icon: <FaJava className="text-red-500" /> },
+        { name: "C#", icon: <TbBrandCSharp className="text-purple-500" /> },
+        { name: ".NET", icon: <SiDotnet className="text-blue-600" /> },
       ]
     },
     {
@@ -41,6 +44,8 @@ const About = () => {
       items: [
         { name: "React", icon: <FaReact className="text-cyan-400" /> },
         { name: "Tailwind", icon: <SiTailwindcss className="text-cyan-300" /> },
+        { name: "Framer Motion", icon: <TbBrandFramerMotion className="text-pink-500" /> },
+        { name: "Three.js", icon: <TbBrandThreejs className="text-gray-200" />}
       ]
     },
     {
@@ -50,6 +55,7 @@ const About = () => {
         { name: "VS Code", icon: <TbBrandVscode className="text-blue-500" /> },
         { name: "PyCharm", icon: <SiPycharm className="text-green-500" /> },
         { name: "Eclipse", icon: <SiEclipseide className="text-orange-300" /> },
+        { name: "Visual Studio", icon: <DiVisualstudio className="text-purple-800" /> },
       ]
     },
     {
