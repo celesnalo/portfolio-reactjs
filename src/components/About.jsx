@@ -2,7 +2,6 @@ import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt, FaReact, FaJ
 import { SiJavascript, SiTailwindcss, SiFirebase, SiVercel, SiEclipseide, SiPycharm, SiDotnet} from 'react-icons/si';
 import { TbBrandVscode, TbBrandCSharp, TbBrandFramerMotion, TbBrandThreejs} from 'react-icons/tb';
 import { DiVisualstudio } from "react-icons/di";
-import resume from '../assets/Snalo SE Resume.docx.pdf';
 import SectionTitle from './SectionTitle';
 
 const About = () => {
@@ -68,6 +67,8 @@ const About = () => {
     }
   ];
 
+  const resumeLink = "https://docs.google.com/document/d/1aVuBi2t28xhgvzaeRVyY83gqh_Kg8aGx/edit?usp=sharing&ouid=103560273917564962444&rtpof=true&sd=true"
+    
   return (
     <section id="about" className="max-w-6xl mx-auto py-20 px-4">
       <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -85,7 +86,7 @@ const About = () => {
           </div>
           <div className="flex justify-start">
             <a
-              href={resume}
+              href={resumeLink}
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors"
               target="_blank"
               rel="noopener noreferrer"
