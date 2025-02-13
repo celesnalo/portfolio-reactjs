@@ -67,6 +67,33 @@ const About = () => {
     }
   ];
 
+  const educationData = [
+    {
+      title: "Central University of Technology",
+      degree: "Diploma in Information Technology (DIP_ICT)",
+      graduation: "Currently studying",
+      concentrations: ["Information Technology"],
+      coursework: ["Information Technology Essentials, Information Technology Mathematics, Problem Solving and Algorithms, Software Development, Internet Programming, Databases, Software Engineering, Graphical Design, Graphical User Interface Design, Technical Programming, Web Content Management, Internet Technologies, Communication Networks, Information Technology and Society",],
+      achievements: ["..."],
+    },
+    {
+      title: "African Leadership Experience",
+      degree: "Software Engineering",
+      graduation: "October 2024",
+      concentrations: ["Front-End Web Development"],
+      achievements: ["Completed Advanced Front-End Capstone Project"],
+      coursework: ["HTML, CSS, JavaScript, React, Tailwind CSS, Git & GitHub"],
+    },
+    {
+      title: "University of KwaZulu-Natal",
+      degree: "Bachelor of Science - Stream M",
+      graduation: "Studies in Computer Science, 2021 - 2023",
+      concentrations: ["Applied Mathematics & Computer Science"],
+      achievements: ["UKZN tech society membership certificate"],
+      coursework: ["Calculus & Linear Algebra, Discrete Mathematics with Applications, Introduction to Statistics, Operations Research, Computer Organisation and Architecture,  Object Oriented Programming, Data Structures, Algorithms"],
+    },
+  ];
+
   const resumeLink = "https://docs.google.com/document/d/1aVuBi2t28xhgvzaeRVyY83gqh_Kg8aGx/edit?usp=sharing&ouid=103560273917564962444&rtpof=true&sd=true"
     
   return (
@@ -96,22 +123,28 @@ const About = () => {
               Resume Preview
             </a>
           </div>
-
           {/* Education */}
           <div className="mt-8">
-            <h3 className="text-xl font-semibold mb-4">Education</h3>
-            <div className="bg-gray-800/50 p-4 rounded-lg">
-              <h4 className="font-medium text-blue-400">African Leadership Experience</h4>
-              <p className="text-gray-400">Software Engineering</p>
-              <p className="text-sm text-gray-500">Graduation: October 2024</p>
+          <h3 className="text-xl font-semibold mb-4">Education</h3>
+          {educationData.map((edu, index) => (
+            <div key={index} className="bg-gray-800/50 p-4 rounded-lg">
+              <h4 className="font-medium text-blue-400">{edu.title}</h4>
+              <p className="text-gray-400">{edu.degree}</p>
+              <p className="text-sm text-gray-500">{edu.graduation}</p>
               <ul className="mt-2 space-y-1 text-gray-300">
-                <li>• Concentrations: Front-End Web Development</li>
-                <li>• Key Achievements: Completed Advanced Front-End Capstone Project</li>
-                <li>• Related Coursework: HTML, CSS, JavaScript, React, Tailwind CSS, Git & GitHub</li>
+                {edu.concentrations && edu.concentrations.map((conc, i) => (
+                  <li key={i}>• Concentrations: {conc}</li>
+                ))}
+                {edu.achievements && edu.achievements.map((ach, i) => (
+                  <li key={i}>• Key Achievements: {ach}</li>
+                ))}
+                {edu.coursework && edu.coursework.map((course, i) => (
+                  <li key={i}>• Related Coursework: {course}</li>
+                ))}
               </ul>
             </div>
+            ))}
           </div>
-
           {/* Contact Information */}
           <div className="mt-8">
             <h3 className="text-xl font-semibold mb-4">Contact</h3>
