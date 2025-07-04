@@ -4,6 +4,7 @@ import javaIMG from '../assets/java.png';
 import alxIMG from '../assets/professional foundations.jpeg';
 import ukznIMG from '../assets/ukzn.png';
 import SectionTitle from './SectionTitle';
+import csharpcert from '../assets/freecodecamp.png';
 
 const certifications = [
   {
@@ -37,6 +38,14 @@ const certifications = [
     date: 'November 2023',
     pdfUrl: '/assets/Mthobisi%20SnaloCele.pdf',
     previewImage: ukznIMG
+  },
+  {
+    id: 4,
+    title: 'Foundational C# with Microsoft',
+    issuer: 'freeCodeCamp',
+    date: 'June 2025',
+    pdfUrl: '/assets/freecodecamp.pdf',
+    previewImage: csharpcert
   }
 ];
 

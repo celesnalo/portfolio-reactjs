@@ -131,7 +131,7 @@ const About = () => {
               <h4 className="font-medium text-blue-400">{edu.title}</h4>
               <p className="text-gray-400">{edu.degree}</p>
               <p className="text-sm text-gray-500">{edu.graduation}</p>
-              <ul className="mt-2 space-y-1 text-gray-300">
+              {/* <ul className="mt-2 space-y-1 text-gray-300">
                 {edu.concentrations && edu.concentrations.map((conc, i) => (
                   <li key={i}>• Concentrations: {conc}</li>
                 ))}
@@ -141,7 +141,7 @@ const About = () => {
                 {edu.coursework && edu.coursework.map((course, i) => (
                   <li key={i}>• Related Coursework: {course}</li>
                 ))}
-              </ul>
+              </ul> */}
             </div>
             ))}
           </div>
